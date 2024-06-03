@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 const config = require('../config');
-const emailTemplate = require('../utils/emailTemplate');
+const { emailTemplate } = require('../utils/emailTemplate');
 
 // Transporter using Elastic Email's SMTP server
 const transporter = nodemailer.createTransport({
@@ -20,7 +20,13 @@ class EmailService {
       subject: 'Welcome to KryptoniteApp',
       html: emailTemplate.confirmation(email),
     };
-    await transporter.sendMail(mailOptions);
+    
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log(`Confirmation email sent to ${email}`);
+    } catch (error) {
+      console.error(`Failed to send confirmation email to ${email}:`, error);
+    }
   }
 
   static async sendOtpEmail(email, otp) {
@@ -30,8 +36,14 @@ class EmailService {
       subject: 'Your OTP Code',
       html: emailTemplate.otp(otp),
     };
-    await transporter.sendMail(mailOptions);
+    
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log(`OTP email sent to ${email}`);
+    } catch (error) {
+      console.error(`Failed to send OTP email to ${email}:`, error);
+    }
   }
 }
 
-module.exports = { EmailService };
+module.exports = { EmailService };
