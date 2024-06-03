@@ -1,13 +1,15 @@
 {
-  "name": "kryptoniteapp-1",
+  "name": "kryptoniteapp",
   "version": "1.0.0",
   "description": "KryptoniteApp is a Node.js backend application for managing user registration, authentication, and file uploads, designed for the fictional planet Krypton. It utilizes modern authentication methods, including email confirmation and OTP login, and allows users to upload and manage image files securely.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Linda",
   "license": "ISC",
   "dependencies": {
     "base64-img": "^1.0.4",
@@ -19,8 +21,10 @@
     "mongoose": "^8.4.1",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.13",
-    "nodemon": "^3.1.2",
     "redis": "^4.6.14",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
   }
 }
