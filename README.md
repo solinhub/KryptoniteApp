@@ -65,7 +65,7 @@ API documentation is available at https://app.clickup.com/9015707762/docs/8cp1j3
 
 ## Base URL
 
-https://kryptoniteapp-pk53.onrender.com
+https://kryptoniteapp.onrender.com
 
 ## Author
 
