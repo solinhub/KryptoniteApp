@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
   userId: {
     type: String,
     default: uuidv4, // Generate a UUID for each new user
-    unique: true
   },
   email: { 
     type: String, 
