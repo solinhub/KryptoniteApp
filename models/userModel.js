@@ -6,11 +6,12 @@ const userSchema = new mongoose.Schema({
   userId: {
     type: String,
     default: uuidv4, // Generate a UUID for each new user
+    unique: true
   },
   email: { 
     type: String, 
     required: true, 
-    unique: true 
+    unique: true // Ensure email is unique
   },
   password: { 
     type: String, 
@@ -23,10 +24,16 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// Pre-save hook to hash the password before saving the user
 userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcryptjs.hash(this.password, 10);
-  next();
+  try {
+    if (this.isModified('password') || this.isNew) {
+      this.password = await bcryptjs.hash(this.password, 10);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
