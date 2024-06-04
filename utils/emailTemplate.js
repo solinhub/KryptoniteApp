@@ -1,16 +1,14 @@
 module.exports = {
-    confirmation: function(email) {
+    confirmation: (email) => {
       return `
-        <h1>Welcome to KryptoniteApp</h1>
-        <p>Hello, ${email}!</p>
-        <p>Thank you for registering. We're excited to have you on board.</p>
+        <h1>Welcome to KryptoniteApp!</h1>
+        <p>Thank you for registering, ${email}.</p>
       `;
     },
-    otp: function(otp) {
+    otp: (otp) => {
       return `
         <h1>Your OTP Code</h1>
-        <p>Your One-Time Password (OTP) is: <strong>${otp}</strong></p>
-        <p>This code is valid for 5 minutes.</p>
+        <p>Your OTP code is ${otp}.</p>
       `;
-    }
+    },
   };
