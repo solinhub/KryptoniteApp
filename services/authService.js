@@ -19,7 +19,7 @@ class AuthService {
         code: uuidv4(),
         expires: Date.now() + 3600000, // expires in 1 hour
       };
-      await EmailService.sendConfirmationEmail(user, confirmation);
+      await EmailService.sendConfirmationEmail(email, confirmation);
       return user;
     } catch (error) {
       throw new Error(`Registration failed: ${error.message}`);
