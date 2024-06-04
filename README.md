@@ -57,8 +57,10 @@ Make sure to set the following environment variables in your `.env` file:
 PORT=3000
 DB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-ELASTICEMAIL_USERNAME=your_elasticemail_username
-ELASTICEMAIL_API_KEY=your_elasticemail_api_key
+SMTP_SERVER=smtp.elasticemail.com
+SMTP_USERNAME=your_smtp_username
+SMTP_PASSWORD=your_smtp_password
+SMPT_PORT=2525
 REDIS_URL=your_redis_url
 REDIS_PASSWORD=your_redis_password
 

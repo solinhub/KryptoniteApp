@@ -5,13 +5,12 @@ const { v4: uuidv4 } = require('uuid');
 const userSchema = new mongoose.Schema({
   userId: {
     type: String,
-    default: uuidv4, // Generate a UUID for each new user
+    default: uuidv4,
     unique: true
   },
   email: { 
     type: String, 
     required: true, 
-    unique: true // Ensure email is unique
   },
   password: { 
     type: String, 
@@ -19,7 +18,7 @@ const userSchema = new mongoose.Schema({
   },
   apiKey: { 
     type: String, 
-    default: uuidv4, // Generate a UUID for each new user's API key
+    default: uuidv4, 
     unique: true 
   },
 });

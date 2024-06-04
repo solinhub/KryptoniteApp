@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 class ApiKeyService {
   static async generateApiKey(userId) {
-    const apiKey = uuidv4(); // Generate a UUID for the API key
+    const apiKey = uuidv4(); 
     const user = await User.findById(userId);
     if (!user) {
       throw new Error('User not found');

@@ -8,7 +8,7 @@ class FileService {
     if (!user) {
       throw new Error('Invalid API key');
     }
-    const base64Data = await base64Img.base64(file.path);
+    const base64Data = await base64Img.base64_encode(file.path);
     const newFile = new File({ filename: file.originalname, data: base64Data, owner: user._id });
     await newFile.save();
     return newFile;

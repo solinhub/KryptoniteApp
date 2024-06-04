@@ -12,7 +12,6 @@
   "author": "Linda",
   "license": "ISC",
   "dependencies": {
-    "@elasticemail/elasticemail-client": "^4.0.23",
     "base64-img": "^1.0.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",

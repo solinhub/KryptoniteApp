@@ -4,6 +4,7 @@ const User = require('../models/userModel');
 const { redisClient } = require('../utils/redisClient');
 const { EmailService } = require('./emailService');
 const config = require('../config');
+const uuidv4 = require('uuid').v4;
 
 class AuthService {
   static async register(email, password) {
@@ -14,12 +15,16 @@ class AuthService {
       }
       const user = new User({ email, password });
       await user.save();
-      await EmailService.sendConfirmationEmail(email);
+      const confirmation = {
+        code: uuidv4(),
+        expires: Date.now() + 3600000, // expires in 1 hour
+      };
+      await EmailService.sendConfirmationEmail(user, confirmation);
       return user;
     } catch (error) {
       throw new Error(`Registration failed: ${error.message}`);
-    }
-  }
+    }
+  }
 
   static async login(email, password) {
     try {

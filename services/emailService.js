@@ -7,15 +7,15 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.elasticemail.com',
   port: 2525, 
   auth: {
-    user: process.env.ELASTICEMAIL_USERNAME,
-    pass: process.env.ELASTICEMAIL_API_KEY
+    user: process.env.SMTP_USERNAME,
+    pass: process.env.SMTP_PASSWORD
   }
 });
 
 class EmailService {
   static async sendConfirmationEmail(email) {
     const mailOptions = {
-      from: process.env.ELASTICEMAIL_USERNAME,
+      from: process.env.SMTP_USERNAME,
       to: email,
       subject: 'Welcome to KryptoniteApp',
       html: emailTemplate.confirmation(email),
@@ -31,7 +31,7 @@ class EmailService {
 
   static async sendOtpEmail(email, otp) {
     const mailOptions = {
-      from: process.env.ELASTICEMAIL_USERNAME,
+      from: process.env.SMTP_USERNAME,
       to: email,
       subject: 'Your OTP Code',
       html: emailTemplate.otp(otp),
